@@ -1,7 +1,7 @@
-## Cooking app for Cybersecurity final project
+# Cooking app for Cybersecurity final project
 For this project I created a social media cooking app using flask and sqlite. 
 
-# I have four html pages that can be used:
+## I have four html pages that can be used:
 
 index.html: login page, if you don't have an account you can click register and it'll go to register.html
 
@@ -12,7 +12,7 @@ user_home: this is the main page jand a navbar is displayed as well as the user,
 account.html: this is a form that allows the user to change their level. All users are automatically set at the basic user (level 0), but anyone can change
 
 
-# I have a few python files that are used:
+## I have a few python files that are used:
 
 config.py contains my secret key 
 
@@ -23,7 +23,7 @@ server.py is where all the app routes are and the flask app is mainly used here
 password.py contains the hash password function, authenticates passwords and also checks if a password is valid
 
 
-# CSS
+## CSS
 
 I have only css file that styles my website
 
