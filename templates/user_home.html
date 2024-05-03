@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cooking App</title>
+    <link href="{{ url_for('static', filename='css/style.css')}}" rel="stylesheet" />
+</head>
+<body>
+    <div class="navbar">
+        <ul>
+            <li><a href="/homepage" class="activepage">For You</a></li>
+            <li><a href="/account">Account</a></li>
+            <li><a href="data.html">Data</a></li>
+            {% if user[3] == 1 %}
+                <li><a href="saved.html">Saved</a></li>
+            {% elif user[3] == 2 %}
+                <li><a href="create_video.html">Create Videos</a></li>
+                <li><a href="video_data.html">Video Data</a></li>
+            {% elif user[3] == 3 %}
+                <li><a href="developers.html">Developers</a></li>
+            {% elif user[3] == 4 %}
+                <li><a href="manager.html">Manager</a></li>
+                <li><a href="developers.html">Developers</a></li>
+            {% endif %}
+        </ul>
+    </div>
+    <h1>Welcome <em>{{user[1]}}</em>!</h1>
+</body>
+</html>

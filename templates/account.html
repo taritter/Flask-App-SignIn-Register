@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cooking App</title>
+    <link href="{{ url_for('static', filename='css/style.css')}}" rel="stylesheet" />
+</head>
+<body>
+    <ul>
+        <li><a href="/homepage">For You</a></li>
+        <li><a href="/account" class="activepage">Account</a></li>
+        <li><a href="data.html">Data</a></li>
+        {% if user[3] == 1 %}
+            <li><a href="saved.html">Saved</a></li>
+        {% elif user[3] == 2 %}
+            <li><a href="create_video.html">Create Videos</a></li>
+            <li><a href="video_data.html">Video Data</a></li>
+        {% elif user[3] == 3 %}
+            <li><a href="developers.html">Developers</a></li>
+        {% elif user[3] == 4 %}
+            <li><a href="developers.html">Developers</a></li>
+            <li><a href="manager.html">Manager</a></li>
+        {% endif %}
+    </ul>
+    <div class="curr-level">
+        <h1>Account Details for {{ user[1] }}</h1>
+        {% if user[3] == 0 %}
+            <p>You currently have the basic user subscription</p>
+            <p>There are ads, you can't save a certain amount of videos/recipes</p>
+        {% elif user[3] == 1 %}
+            <p>You currently have the premium user subscription</p>
+            <p>There are no ads, you unlimited saves</p>
+        {% elif user[3] == 2 %}
+            <p>You currently have the creator subscription</p>
+            <p>You can create and post videos/recipes</p>
+        {% elif user[3] == 3 %}
+            <p>You currently have the basic user subscription</p>
+        {% elif user[3] == 4 %}
+            <p>You currently have the basic user subscription</p>
+        {% endif %}
+        <p>Change your level by filling out this form:</p>
+        <form action="/level" method="post" id="level_change">
+            <h2 class="lev_change">What level would you like to change to?</h1>
+            <div class="choose-level">
+                <input type="radio" name="level" id="basic" value="0"/>
+                <label for="basic">Basic User</label><br>
+                <input type="radio" name="level" id="premium" value="1"/>
+                <label for="premium">Premium User</label><br>
+                <input type="radio" name="level" id="creator"value="2"/>
+                <label for="creator">Creator</label><br>
+                <input type="radio" name="level" id="dev"value="3"/>
+                <label for="seller">Developer</label><br>
+                <input type="radio" name="level" id="manager"value="4"/>
+                <label for="dev">Manager</label><br>        
+            </div>
+                <button type="submit" class="level_btn">Change</button>
+        </form>
+    </div>
+</body>
+</html>

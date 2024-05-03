@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cooking App</title>
+    <link href="{{ url_for('static', filename='css/style.css')}}" rel="stylesheet" />
+</head>
+<body>
+    <h1 class="app_name">Cooked: A Social Media Cooking App</h1>
+    <div class="wrapper">
+        
+        <form action="/login" method="post" id="login_form">
+            <h1>Sign In</h1>
+            <div class="input-box">
+                <input type="text" name="username" id="username" placeholder="username here" />
+            </div>
+            <div class="input-box">
+                <input type="text" name="password" id="password" placeholder="password here" />
+            </div>
+            {% if error_message %}
+                <p class="error">{{error_message}}</p>
+            {% endif %}
+                <button type="submit" class="login-btn">Login</button>
+        </form>
+        <div class="register-button">
+            <p>Don't have an account? <a href="/register_page" method="get" class="register-link">Register</a></p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cooking App</title>
+    <link href="{{ url_for('static', filename='css/style.css')}}" rel="stylesheet" />
+    <script>
+        function toggle_password_visibility() {
+            var passwordInput = document.getElementById("password");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                document.getElementById("togglePasswordButton").innerText = "Hide Password";
+            } else {
+                passwordInput.type = "password";
+                document.getElementById("togglePasswordButton").innerText = "Show Password";
+            }
+        }
+
+        function generate_strong_password() {
+            var length = 12;
+            var words = ['Angel', 'Worm', 'Bunny', 'Water', 'Phone', 'Doggy', 'Bottle', 'Green', 'White', 'Candy', 'Grape', 'Apple', 'Lamp', 'Couch', 'Beds', 'Work', 'Scarf', 'Hats', 'Table', 'Shirt', 'Lazy', 'Heart', 'Happy', 'Fish', 'Snake', 'Airport', 'Farmer', 'Lawyer', 'School']
+            var charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+";
+            var symbols = ['@', '#', '$', '%', '=', ':', '?', '.', '/', '|', '~', '>',  
+           '*', '(', ')', '<']
+            var numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+            var password = "";
+            for (var i = 0; i < length; i++) {
+                var charIndex = Math.floor(Math.random() * charset.length);
+                password += charset[charIndex];
+            }
+            document.getElementById("password").value = password;
+        }
+
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Register for Cooking App</h1>
+        <form action="/register" method="post">
+            <p>Password must be minimum of 8 characters, must have at least one number, one lowercase and uppercase letter, and a special character</p>
+            <div class="input-box">
+                <input type="text" name="username" id="username" placeholder="username here" />
+            </div>
+            <div class="input-box">
+                <input type="text" name="password" id="password" placeholder="password here" pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,25}$" required/>
+            </div>
+            <div class="pass-btn">
+                <button type="button" onclick="generate_strong_password()">Generate Password</button>
+                <button type="button" onclick="toggle_password_visibility()">Hide Password</button>
+            </div>
+            {% if error_message %}
+                <p class="error">{{error_message}}</p>
+            {% endif %}
+            <button type="submit" class="login-btn">Register</button>
+        </form>
+    </div>
+</body>
+</html>
