@@ -25,7 +25,7 @@ password.py contains the hash password function, authenticates passwords and als
 
 ## CSS
 
-I have only css file that styles my website
+I have only one css file that styles my website
 
 
 # Running my program
